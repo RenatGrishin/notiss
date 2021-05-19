@@ -3,23 +3,26 @@ import {connect} from "react-redux";
 import Login from "./Login";
 
 const checkPassword =(password)=>{
-	let errorMessage = "Пароль должен содержать минимум 8 символов, минимум 1 цифра, минимум 1 спецсимвол, минимум 1 заглавная буква";
-
 	if(!password.match(/\d/)
 		|| !password.match(/\W/)
 		|| !password.match(/[a-z]/)
 		|| !password.match(/[A-Z]/)
 		|| password.length < 8 ){
-		console.log(errorMessage)
+		return false;
 	}
-
-	console.log(password)
+	return true;
 };
+
+const checkLogin =(value)=>{
+	if(!value.match(/[@]/)) return false;
+	return true;
+}
 
 const login =(props)=>{
 	return <Login
 		login={props.login}
 		checkPassword={checkPassword}
+		checkLogin={checkLogin}
 	/>
 };
 
@@ -29,13 +32,6 @@ function  mapStateToProps(state) {
 		users: state.users
 	}
 };
-/*
-function mapDispatchToProps(dispatch){
-	return{
-		login: ()=>{return dispatch(login())},
-		checkPassword: ()=>{return checkPassword()}
-	}
-}*/
 
-const LoginContainer = connect(mapStateToProps, {login, checkPassword})(login);
+const LoginContainer = connect(mapStateToProps, {login, checkPassword, checkLogin})(login);
 export default LoginContainer;

@@ -8,7 +8,6 @@ import Profile from "./pages/profile/Profile";
 import LoginContainer from "./pages/login/LoginContainer";
 
 function App(props) {
-  console.log(props.store.getState().auth.isAuth)
   return (
     <div>
       <Container>
