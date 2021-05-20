@@ -6,13 +6,13 @@ import {editEnteredLogin} from "../../store/actions/authAction";
 
 class profileContainer extends React.Component{
 	getUserInfo(){
-		const userInfo = this.props.users.find(key => key.id === this.props.auth.userID)
+		const userInfo = this.props.users.find(key => key.id === this.props.auth.userID);
+		return userInfo;
 	}
 
 	render (){
 		return <Profile
-			auth={this.props.auth}
-			users={this.props.users}
+			user={this.getUserInfo()}
 		/>
 	}
 }

@@ -1,15 +1,16 @@
 import React from "react";
-import {Card, ListGroup} from "react-bootstrap";
+import {Alert, Card, ListGroup} from "react-bootstrap";
 
 export default function MainPage(props){
 	return(
 		<Card>
 			<Card.Body>
-				<Card.Title>Тестовое задание от ООО НОТИССИМУС</Card.Title>
+				<Card.Title>Тестовое задание от <b>ООО НОТИССИМУС</b></Card.Title>
 				<Card.Subtitle>Автор: Гришин Ренат</Card.Subtitle>
-				<Card.Text>Мои контакты:</Card.Text>
-				<Card.Text>Тел: +79656221665</Card.Text>
-				<Card.Text> E-Mail: cynvox@gmail.com</Card.Text>
+				<Card.Text>Мои контакты:<br/>
+					Тел: +79656221665 <br/>
+					E-Mail: cynvox@gmail.com</Card.Text>
+				<Alert variant={"success"}>Логин: test@mail.ru<br/> Пароль: !1Qwerty</Alert>
 			</Card.Body>
 			<Card.Header>Стек технологий</Card.Header>
 			<ListGroup>

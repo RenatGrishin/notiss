@@ -14,6 +14,7 @@ export default function auth (state=initialState, action) {
 		case LOGIN:
 			copyState = {...state};
 			copyState.isAuth = true;
+			copyState.userID = action.id;
 			return copyState;
 		case LOGOUT:
 			copyState = {...state};

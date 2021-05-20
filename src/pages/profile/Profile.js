@@ -6,12 +6,12 @@ export default function Profile(props){
 			<h2>Профиль пользователя</h2>
 		<Card>
 			<Card.Body>
-				<Card.Title>Имя</Card.Title>
-				<Card.Subtitle>id: </Card.Subtitle>
+				<Card.Title>{props.user.name}</Card.Title>
+				<Card.Subtitle>id: {props.user.id}</Card.Subtitle>
 			</Card.Body>
 			<ListGroup>
-				<ListGroup.Item>Логин: </ListGroup.Item>
-				<ListGroup.Item>Пароль: </ListGroup.Item>
+				<ListGroup.Item>Логин: {props.user.login}</ListGroup.Item>
+				<ListGroup.Item>Пароль: {props.user.password}</ListGroup.Item>
 			</ListGroup>
 		</Card></>
 	);

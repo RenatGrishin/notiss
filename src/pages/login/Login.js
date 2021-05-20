@@ -13,7 +13,12 @@ class Login extends React.Component{
 	}
 
 	/*
-
+		Здесь я поступил плохо и загрязнил ui компоненту.
+		State не должен был содержать userLogin, userPassword  и функции writeUserLoginAndPassword не должно было быть.
+		Информация о вводе логина и пароля должна была хранится в userReducer,
+		но у меня почему-то после установки Реакт Роутера начал сбрасываться фокус с инпута,
+		когда происходит изменения в редакс стейте (в предыдущем проекте такого не было).
+		Поэтому, как временный вариант пришлось хранить информацию в локальном стейте.
 	 */
 	writeUserLoginAndPassword(value, isLogin){
 		if (isLogin) {
@@ -44,9 +49,7 @@ class Login extends React.Component{
 		}
 	}
 	checkLoginAndPasswordInBase(){
-		//if(!this.state.loginValidation || !this.state.passwordValidation) return false;
-		//this.props.checkDateWithUsers(this.state.userLogin, this.state.userPassword, this.props.users);
-		if (this.props.checkDateWithUsers("gr@mail.ru", "*Qwerty1", this.props.users, this.props.login)){
+		if (this.props.checkDateWithUsers(this.state.userLogin, this.state.userPassword)){
 			this.setState({userPassword: "",loginValidation: false, passwordValidation: false, userDateError: false});
 		}else{
 			this.setState({userDateError: true});
