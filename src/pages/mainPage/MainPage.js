@@ -5,7 +5,7 @@ export default function MainPage(props){
 	return(
 		<Card>
 			<Card.Body>
-				<Card.Title>Тестовое задание для ООО НОТИССИМУС</Card.Title>
+				<Card.Title>Тестовое задание от ООО НОТИССИМУС</Card.Title>
 				<Card.Subtitle>Автор: Гришин Ренат</Card.Subtitle>
 				<Card.Text>Мои контакты:</Card.Text>
 				<Card.Text>Тел: +79656221665</Card.Text>

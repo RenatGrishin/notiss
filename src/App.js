@@ -1,11 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import {Button, Card, Col, Container, ListGroup, Nav, Row} from 'react-bootstrap';
-import {login, logout} from "./store/actions/authAction";
+import {Button, Col, Container, Nav, Row} from 'react-bootstrap';
+import {logout} from "./store/actions/authAction";
 import MainPage from "./pages/mainPage/MainPage";
-import {Switch, Route, BrowserRouter, Link} from "react-router-dom";
-import Profile from "./pages/profile/Profile";
+import {Switch, Route, Link, Redirect} from "react-router-dom";
 import LoginContainer from "./pages/login/LoginContainer";
+import React from "react";
+import ProfileContainer from "./pages/profile/ProfileContainer";
 
 function App(props) {
   return (
@@ -28,8 +29,16 @@ function App(props) {
           <Col>
             <Switch>
               <Route exact path={"/"} component={()=><MainPage/>}/>
-              <Route path={"/profile"} component={()=><Profile/>}/>
-              <Route path={"/login"} component={()=><LoginContainer/>}/>
+              <Route path={"/profile"}>{
+                !props.store.getState().auth.isAuth
+                  ? <Redirect to="/login" />
+                  : <ProfileContainer/>
+              }</Route>
+              <Route path={"/login"}>{
+                props.store.getState().auth.isAuth
+                  ? <Redirect to="/profile" />
+                  : <LoginContainer/>
+              }</Route>
             </Switch>
           </Col>
         </Row>
